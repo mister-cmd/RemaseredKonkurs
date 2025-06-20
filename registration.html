@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Регистрация | Знатоки русского языка</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+    .subsection {
+      margin-top: 15px;
+      background: #f9fafb;
+      padding: 15px;
+      border-radius: 8px;
+      display: none;
+    }
+    .visible {
+      display: block !important;
+    }
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 12px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2563eb;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 30px;
+      color: #6b7280;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Регистрация участника</h1>
+    <form id="regForm">
+      <label for="fio">ФИО</label>
+      <input type="text" id="fio" name="fio" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="status">Статус</label>
+      <select id="status" required>
+        <option value="">Выберите статус</option>
+        <option value="school">Школьник</option>
+        <option value="student">Студент</option>
+        <option value="other">Другое</option>
+      </select>
+
+      <label for="country">Страна</label>
+      <select id="country" required>
+        <option value="">Выберите страну</option>
+      </select>
+
+      <div id="regionWrapper" style="display:none;">
+        <label for="region">Регион / Край / Область</label>
+        <select id="region"></select>
+      </div>
+
+      <label for="city">Город</label>
+      <input type="text" id="city" name="city" required>
+
+      <div id="schoolFields" class="subsection">
+        <label for="school">Школа</label>
+        <input type="text" id="school" name="school">
+
+        <label for="grade">Класс</label>
+        <select id="grade" name="grade">
+          <option value="">Выберите класс</option>
+          <!-- Заполняется скриптом -->
+        </select>
+      </div>
+
+      <div id="studentFields" class="subsection">
+        <label for="university">ВУЗ</label>
+        <input type="text" id="university" name="university">
+
+        <label for="faculty">Факультет</label>
+        <input type="text" id="faculty" name="faculty">
+      </div>
+
+      <button type="submit">Зарегистрироваться</button>
+    </form>
+  </div>
+
+  <footer>© 2025 Знатоки русского языка</footer>
+
+  <script src="geo-data.js"></script>
+  <script>
+    const status = document.getElementById("status");
+    const schoolFields = document.getElementById("schoolFields");
+    const studentFields = document.getElementById("studentFields");
+    const gradeSelect = document.getElementById("grade");
+
+    const countrySelect = document.getElementById("country");
+    const regionSelect = document.getElementById("region");
+    const regionWrapper = document.getElementById("regionWrapper");
+
+    // Классы 1–11
+    for (let i = 1; i <= 11; i++) {
+      const option = document.createElement("option");
+      option.value = i;
+      option.textContent = `${i} класс`;
+      gradeSelect.appendChild(option);
+    }
+
+    // Отображение полей по статусу
+    status.addEventListener("change", () => {
+      schoolFields.classList.remove("visible");
+      studentFields.classList.remove("visible");
+
+      if (status.value === "school") {
+        schoolFields.classList.add("visible");
+      } else if (status.value === "student") {
+        studentFields.classList.add("visible");
+      }
+    });
+
+    // Загрузка стран
+    countries.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      countrySelect.appendChild(opt);
+    });
+
+    // Загрузка регионов
+    countrySelect.addEventListener("change", () => {
+      const selected = countrySelect.value;
+      const regions = regionsByCountry[selected];
+      regionSelect.innerHTML = "";
+
+      if (regions && regions.length > 0) {
+        regionWrapper.style.display = "block";
+        regions.forEach(r => {
+          const opt = document.createElement("option");
+          opt.value = r;
+          opt.textContent = r;
+          regionSelect.appendChild(opt);
+        });
+      } else {
+        regionWrapper.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

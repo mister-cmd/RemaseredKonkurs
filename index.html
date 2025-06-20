@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Знатоки Русского Языка</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #1e3a8a;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+
+    header p {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      background-color: #f9fafb;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    nav a {
+      color: #1e40af;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #2563eb;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(to bottom, #ffffff, #f1f5f9);
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      color: #4b5563;
+    }
+
+    .hero button {
+      padding: 12px 24px;
+      font-size: 1rem;
+      border: none;
+      background-color: #3b82f6;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .hero button:hover {
+      background-color: #2563eb;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #111827;
+    }
+
+    .card p {
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      background-color: #1e3a8a;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero h2 {
+        font-size: 1.5rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Знатоки Русского Языка</h1>
+    <p>Всероссийский конкурс с международным участием</p>
+  </header>
+
+  <nav>
+    <a href="#">Главная</a>
+    <a href="#">Положение</a>
+    <a href="#">Регистрация</a>
+    <a href="#">Победители</a>
+    <a href="#">Контакты</a>
+  </nav>
+
+  <section class="hero">
+    <h2>Участвуй в конкурсе — проверь свою грамотность!</h2>
+    <p>Зарегистрируйся, проходи задания, побеждай! Тебя ждут дипломы, призы и уважение русскоязычного комьюнити ✊</p>
+    <button>Регистрация</button>
+  </section>
+
+  <section class="section">
+    <h2 style="text-align:center;">Почему стоит участвовать?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Интересные задания</h3>
+        <p>От орфографии до синтаксиса — тренируем мозг и расширяем кругозор.</p>
+      </div>
+      <div class="card">
+        <h3>Гибкий формат</h3>
+        <p>Проходи этапы в любое время до 18 июня. Без стресса и дедлайнов.</p>
+      </div>
+      <div class="card">
+        <h3>Признание</h3>
+        <p>Лучшие участники получают грамоты и дипломы. Включи в портфолио!</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Тех. поддержка: <a href="mailto:ruskonkurs.pnrpu@yandex.ru" style="color: #93c5fd;">ruskonkurs.pnrpu@yandex.ru</a><br />
+    © 2025 Знатоки Русского Языка
+  </footer>
+
+</body>
+</html>
